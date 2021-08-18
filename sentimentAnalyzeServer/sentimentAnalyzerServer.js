@@ -3,6 +3,25 @@ const app = new express();
 const dotenv = require('dotenv');
 dotenv.config();
 
+
+const express = require('express');
+const app = new express();
+app.use(express.static('client'))
+ 
+const cors_app = require('cors');
+app.use(cors_app());
+ 
+//This should be added by the learner on the basis of the learning in the modules 
+const dotenv = require('dotenv');
+const { request } = require('express');
+ dotenv.config();
+const api_key = process.env.API_KEY;
+const api_url = process.env.API_URL;
+ 
+app.get("/",(req,res)=>{
+ res.render('index.html');
+ });
+
 function getNLUInstance(){
     let api_key = process.env.API_KEY;
     let api_url = process.env.API_URL;
